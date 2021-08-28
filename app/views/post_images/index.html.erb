@@ -1,0 +1,18 @@
+<!--コントローラから渡された@post_images変数内から1つずつ取り出して、post_image変数へ格納します。-->
+<% @post_images.each do |post_image| %>
+<div>
+<!--attachment_image_tagは、refile側が用意したヘルパーで、imgタグを作成してくれます。-->
+<!--post_image変数のimage_idに保存された画像のimgタグを生成します。-->
+  <%= attachment_image_tag post_image, :image %>
+  <p>投稿ユーザー画像：<%= image_tag('sample-author1.jpg') %></p>
+<!--post_image変数のshop_nameカラムを表示します。-->
+<!--このカラムは、post_imageモデルに定義されています。-->
+  <p>ショップ名：<%= post_image.shop_name %></p>
+<!--post_image変数のcaptionカラムを表示します。-->
+<!--このカラムも、post_imageモデルに定義されています。-->
+  <p>説明：<%= post_image.caption %></p>
+<!--post_image変数のuser_idに関連付けられているuserモデルのnameカラムを表示します。-->
+<!--同様にこのカラムも、post_imageモデルに定義されています。-->
+  <p>ユーザーネーム：<%= post_image.user.name %></p>
+</div>
+<% end %>
